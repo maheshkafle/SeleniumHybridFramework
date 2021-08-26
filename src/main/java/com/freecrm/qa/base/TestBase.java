@@ -20,7 +20,7 @@ public class TestBase {
         // read properties from config/config.properties
         try{
             prop = new Properties();
-            FileInputStream input = new FileInputStream("C:\\Users\\mahesh.kafle\\IdeaProjects\\SeleniumHybridFramework\\src\\main\\java\\com\\freecrm\\qa\\config\\config.properties");
+            FileInputStream input = new FileInputStream("config.properties");
             prop.load(input);
         }
         catch (FileNotFoundException e){
@@ -34,12 +34,12 @@ public class TestBase {
     public static void initialization(){
         String browserName = prop.getProperty("browser");
         if(browserName.equals("chrome")){
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\mahesh.kafle\\IdeaProjects\\Drivers\\chromedriver_win32\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
             driver = new ChromeDriver();
 
         }
         else if(browserName.equals("FF")){
-            System.setProperty("webdriver.gekco.driver", "C:\\Users\\mahesh.kafle\\IdeaProjects\\Drivers\\geckodriver-v0.29.1-win32\\geckodriver.exe");
+            System.setProperty("webdriver.gekco.driver", "geckodriver.exe");
             driver = new ChromeDriver();
         }
 
