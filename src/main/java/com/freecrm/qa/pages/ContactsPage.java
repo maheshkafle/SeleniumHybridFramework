@@ -1,5 +1,8 @@
 package com.freecrm.qa.pages;
 
-public class ContactsPage {
+import com.freecrm.qa.base.TestBase;
+
+public class ContactsPage extends TestBase {
+
 
 }
