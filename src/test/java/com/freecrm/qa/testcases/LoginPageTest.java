@@ -33,12 +33,6 @@ public class LoginPageTest extends TestBase {
         Assert.assertEquals(title, "Cogmento CRM");
     }
 
-//    @Test(priority = 2)
-//    public void validateCRMImageTest(){
-//        boolean flag = loginPage.validateCRMImage();
-//        Assert.assertTrue(flag);
-//    }
-
     @Test(priority = 2)
     public void LoginTest() throws InterruptedException {
         homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
