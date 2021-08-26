@@ -35,10 +35,6 @@ public class LoginPage extends TestBase {
         return driver.getTitle();
     }
 
-//    public boolean validateCRMImage(){
-//        return crmLogo.isDisplayed();
-//    }
-
     public HomePage login(String uname, String pwd){
         username.sendKeys(uname);
         password.sendKeys(pwd);
