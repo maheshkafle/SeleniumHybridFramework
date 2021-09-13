@@ -63,7 +63,6 @@ public class HomePage extends TestBase {
     }
 
     public void clickOnNewContactLink(){
-        //testUtil.switchToFrame();
         Actions action = new Actions(driver);
         action.moveToElement(contactsLink).build().perform();
 
