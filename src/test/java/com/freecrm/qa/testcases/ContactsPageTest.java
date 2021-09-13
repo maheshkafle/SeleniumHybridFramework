@@ -6,6 +6,7 @@ import com.freecrm.qa.utils.TestUtil;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class ContactsPageTest extends TestBase {
@@ -14,6 +15,8 @@ public class ContactsPageTest extends TestBase {
     HomePage homePage;
     TestUtil testUtil;
     ContactsPage contactsPage;
+
+    String sheetName = "contacts";
 
     public ContactsPageTest(){
         // BaseClass constructor will be called and properties will be initialized
@@ -54,6 +57,23 @@ public class ContactsPageTest extends TestBase {
         Thread.sleep(2000);
         contactsPage.selectContactsByName("smarshqa mahesh1");
         Thread.sleep(2000);
+    }
+
+//    @DataProvider
+//    public Object[][] getCRMTestData(){
+//        Object data[][] = TestUtil.getTestData(sheetName);
+//        return data;
+//        @Test(dataProvider="getCRMTestData")
+//
+//    }
+
+    @Test(priority = 4)
+    public void validateCreateNewContact(){
+        //String title, String firstName, String lastName, String company
+        //testUtil.switchToFrame();
+        homePage.clickOnNewContactLink();
+        contactsPage.createNewContact("Mr.",  "Tom", "Peter", "Google");
+        //contactsPage.createNewContact(title,  firstName, lastName, company);
     }
 
     @AfterMethod
