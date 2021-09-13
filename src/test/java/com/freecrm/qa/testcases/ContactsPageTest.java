@@ -32,7 +32,7 @@ public class ContactsPageTest extends TestBase {
         contactsPage = new ContactsPage();
         homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
         testUtil.switchToFrame();
-        contactsPage = homePage.clickOnContactsLink();
+        //contactsPage = homePage.clickOnContactsLink();
     }
 
     /*
@@ -42,38 +42,38 @@ public class ContactsPageTest extends TestBase {
 
     @Test(priority = 1)
     public void verifyContactsLabelTest(){
+        contactsPage = homePage.clickOnContactsLink();
         Assert.assertTrue(contactsPage.verifyContactsLabel(), "Contacts Label is missing on the Page");
     }
 
 
     @Test(priority = 2)
     public void selectContactsTest() {
+        contactsPage = homePage.clickOnContactsLink();
         contactsPage.selectContactsByName("test1 test2");
     }
 
     @Test(priority = 2)
     public void selectMultipleContactsTest() throws InterruptedException {
+        contactsPage = homePage.clickOnContactsLink();
         contactsPage.selectContactsByName("test1 test2");
         Thread.sleep(2000);
         contactsPage.selectContactsByName("smarshqa mahesh1");
         Thread.sleep(2000);
     }
 
-//    @DataProvider
-//    public Object[][] getCRMTestData(){
-//        Object data[][] = TestUtil.getTestData(sheetName);
-//        return data;
-//        @Test(dataProvider="getCRMTestData")
-//
-//    }
+    @DataProvider
+    public Object[][] getCRMTestData(){
+        Object data[][] = TestUtil.getTestData(sheetName);
+        return data;
+    }
 
-    @Test(priority = 4)
-    public void validateCreateNewContact(){
+    @Test(priority = 4, dataProvider="getCRMTestData")
+    public void validateCreateNewContact(String title, String firstName, String lastName, String company) throws InterruptedException {
         //String title, String firstName, String lastName, String company
-        //testUtil.switchToFrame();
         homePage.clickOnNewContactLink();
-        contactsPage.createNewContact("Mr.",  "Tom", "Peter", "Google");
-        //contactsPage.createNewContact(title,  firstName, lastName, company);
+        //contactsPage.createNewContact("Mr.",  "Tom", "Peter", "Google");
+        contactsPage.createNewContact(title,  firstName, lastName, company);
     }
 
     @AfterMethod
