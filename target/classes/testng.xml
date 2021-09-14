@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="FREE CRM">
+
+    <!-- Listener entry for ExtentReporterNG Class -->
+    <listeners>
+        <listener class-name="com.freecrm.qa.ExtentReportListener.ExtentReporterNG"/>
+    </listeners>
+
     <test name="FREE CRM Regression Test">
         <classes>
             <class name="com.freecrm.qa.testcases.LoginPageTest"></class>
