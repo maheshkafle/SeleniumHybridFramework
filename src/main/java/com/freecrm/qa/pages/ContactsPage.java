@@ -4,6 +4,7 @@ import com.freecrm.qa.base.TestBase;
 import com.freecrm.qa.utils.TestUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -12,6 +13,7 @@ import org.testng.annotations.DataProvider;
 public class ContactsPage extends TestBase {
 
     @FindBy(xpath = "//td[contains(text(), 'Contacts')]")
+    @CacheLookup // Interview Question: Used to speed up test script
     WebElement contactsLabel;
 
     @FindBy(id = "first_name")
