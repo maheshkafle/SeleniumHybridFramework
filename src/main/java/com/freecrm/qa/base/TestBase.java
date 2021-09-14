@@ -1,9 +1,12 @@
 package com.freecrm.qa.base;
 
 import com.freecrm.qa.utils.TestUtil;
+import com.freecrm.qa.utils.WebEventListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,13 +20,15 @@ public class TestBase {
     // intialized prop variable
     public static Properties prop;
 
+    public static EventFiringWebDriver e_driver;
+    public static WebEventListener eventListener;
     // constructor name is classname
     public TestBase(){
 
         // read properties from config/config.properties
         try{
             prop = new Properties();
-            FileInputStream input = new FileInputStream("config.properties");
+            FileInputStream input = new FileInputStream("C:\\Users\\mahesh.kafle\\IdeaProjects\\SeleniumHybridFramework\\src\\main\\java\\com\\freecrm\\qa\\config\\config.properties");
             prop.load(input);
         }
         catch (FileNotFoundException e){
@@ -47,6 +52,12 @@ public class TestBase {
             WebDriverManager.firefoxdriver().setup();
             driver = new ChromeDriver();
         }
+
+        // Code to Add WebDriver Fire Event - This will generate proper logs for different selenium actions.
+        e_driver = new EventFiringWebDriver(driver);
+        eventListener = new WebEventListener();
+        e_driver.register(eventListener);
+        driver = e_driver;
 
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
